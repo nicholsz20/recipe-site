@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import logo from './logo.svg';
+import { BrowserRouter, Routes, Route} from "react-router-dom";
+
+
 import axios from 'axios';
+
+import Navbar from './Components/Navbar';
+import Home from './Components/Home';
+import RecipeList from './Components/RecipeList';
 
 const KEY = '24ba6bf883a944a09e1f169a549f2c10'
 
@@ -27,9 +33,15 @@ function App() {
 
 
   return (
-    <div className="App">
-      Hello World
-    </div>
+    <BrowserRouter>
+      <Navbar />
+        <Routes>
+          <Route>
+            <Route path="/" element={<Home />} />
+            <Route path="/recipe_list" element={<RecipeList />} />
+          </Route>
+        </Routes>
+    </BrowserRouter>
   );
 }
 
