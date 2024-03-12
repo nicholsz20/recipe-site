@@ -21,22 +21,21 @@ interface RecipeArrayProps {
 
 const RecipeArray = ({data}: RecipeArrayProps) => {
     return(
-        <div key={data.id}>
+        <div key={data.id} className="text-center">
             <ul>
-                <li>
-                    {data.id}
-                </li>
+                <div>
+                    <span hidden>{data.id}</span>
                     <h3>{data.title}</h3>
-                
-                <li>
+                </div>       
+                <div>
                     <img src={data.image} />
-                </li>
-                <li>
+                </div>
+                <div>
                     <RecipeInstructions instructions={data.instructions} />
-                </li>
-                <li>
+                </div>
+                <div>
                     <RecipeInstructions instructions={data.summary} />
-                </li>
+                </div>
             </ul>
 
         </div>
