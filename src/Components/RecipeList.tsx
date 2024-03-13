@@ -22,34 +22,48 @@ const KEY = "24ba6bf883a944a09e1f169a549f2c10";
 
 const RecipeList = () => {
   const [data, setData] = useState<SpoonacularResponse | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
-  useEffect(() => {
+  const [loading, setLoading] = useState<boolean>(false);
+
     const fetchData = async () => {
+        setLoading(true)
       try {
         const response = await axios.get(
           `https://api.spoonacular.com/recipes/random?apiKey=${KEY}`
         );
         setData(response.data);
-        setLoading(false);
+        
       } catch (error) {
         console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false);
       }
     };
-    fetchData();
-    console.log(data);
-  }, []);
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+
+    const handleRefresh = () => {
+        fetchData();
+    }
+
   return (
     <div>
+    <button onClick={handleRefresh} disabled={loading}>Refresh Meal</button>
       {loading ? (
         <div className="spinner-container">
           <FontAwesomeIcon icon={faSpinner} spin size="3x" />
           <p>Loading...</p>
         </div>
       ) : (
+        
         data?.recipes.map((recipe) => (
           <RecipeArray key={recipe.id} data={recipe} />
         ))
+        
+        
       )}
+      
     </div>
   );
 };
