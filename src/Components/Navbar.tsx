@@ -5,22 +5,23 @@ import { Link } from "react-router-dom";
 import logo from "./Assets/logo.png"
 
 type ShowNav = {
-    showNav: boolean
+    showNav: boolean,
+    handleShowNav: () => void
 }
 
-const Navbar = ({showNav}: ShowNav) => {
+const Navbar = ({showNav, handleShowNav}: ShowNav) => {
   return (
     <div className={showNav ? 'sidenav active' : 'sidenav'}>
         <img src={logo} alt="logo" className="logo"/>
       <ul>
         <li>
-          <Link to="/" className="nav-link">
+          <Link to="/" className="nav-link" onClick={handleShowNav}>
           <FontAwesomeIcon icon={faHouse} className="nav-icons"/>
            Home</Link>
         </li>
         <br />
         <li>
-          <Link to="/recipe_list" className="nav-link">
+          <Link to="/recipe_list" className="nav-link" onClick={handleShowNav}>
           <FontAwesomeIcon icon={faQuestion} className="nav-icons"/>
           Mystery Meal</Link>
         </li>
