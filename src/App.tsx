@@ -20,7 +20,7 @@ function App() {
   return (
     <BrowserRouter>
     <Header handleShowNav={handleShowNav}/>
-      <Navbar showNav={showNav} />
+      <Navbar showNav={showNav} handleShowNav={handleShowNav}/>
         <Routes>
           <Route>
             <Route path="/" element={<Home />} />
