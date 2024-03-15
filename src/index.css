@@ -8,6 +8,7 @@ header {
   padding: 30px;
   background: #011627;
   height: 40px;
+  position: sticky;
 }
 
 header svg {
@@ -150,3 +151,32 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+
+.cat-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: (minmax(100px, auto));
+  gap: 20px;
+  justify-content: center;
+}
+
+.cat {
+  text-align: center;
+  margin: 20px;
+}
+
+.cat-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ccc;
+}
+
+.cat-title {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
