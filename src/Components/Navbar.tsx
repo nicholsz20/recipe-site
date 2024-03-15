@@ -1,4 +1,4 @@
-import { faHouse, faQuestion } from "@fortawesome/free-solid-svg-icons";
+import { faHouse, faList, faQuestion } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 
@@ -18,12 +18,16 @@ const Navbar = ({showNav, handleShowNav}: ShowNav) => {
           <Link to="/" className="nav-link" onClick={handleShowNav}>
           <FontAwesomeIcon icon={faHouse} className="nav-icons"/>
            Home</Link>
-        </li>
-        <br />
+        </li> 
         <li>
           <Link to="/recipe_list" className="nav-link" onClick={handleShowNav}>
           <FontAwesomeIcon icon={faQuestion} className="nav-icons"/>
           Mystery Meal</Link>
+        </li>
+        <li>
+          <Link to="/categories" className="nav-link" onClick={handleShowNav}>
+          <FontAwesomeIcon icon={faList} className="nav-icons"/>
+          Categories</Link>
         </li>
       </ul>
     </div>
