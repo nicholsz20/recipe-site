@@ -8,6 +8,7 @@ import Home from './Components/Home';
 import RecipeList from './Components/RecipeList';
 import Header from "./Components/Header";
 import { useState } from "react";
+import Category from "./Components/Category";
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
           <Route>
             <Route path="/" element={<Home />} />
             <Route path="/recipe_list" element={<RecipeList />} />
+            <Route path="/categories" element={<Category />} />
           </Route>
         </Routes>
     </BrowserRouter>
