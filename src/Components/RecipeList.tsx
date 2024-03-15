@@ -31,9 +31,9 @@ export interface SpoonacularResponse {
 
 //If a key is full comment it out and uncomment a different one
 
-//const KEY = "24ba6bf883a944a09e1f169a549f2c10";
+const KEY = "24ba6bf883a944a09e1f169a549f2c10";
 //const KEY = "cb61fb7dddc34daba2d7f61b391e90c1";
-const KEY = "e3de5d36255e46babdbd21cbbbf5ec38";
+//const KEY = "e3de5d36255e46babdbd21cbbbf5ec38";
 
 const RecipeList = () => {
   const [data, setData] = useState<SpoonacularResponse | null>(null);
