@@ -1,3 +1,6 @@
+import { Link } from 'react-router-dom';
+import ViewAll from './Assets/viewall.webp';
+
 const mealType = [
   {
     cat: "main course",
@@ -43,6 +46,10 @@ const mealType = [
     cat: "snack",
     img: "https://spoonacular.com/recipeImages/651437-556x370.jpg",
   },
+  {
+    cat: 'View All',
+    img: `${ViewAll}`
+  }
 ];
 
 const Category = () => {
@@ -55,7 +62,7 @@ const Category = () => {
       ))}
       
     </div>
-    <span className="cat">View All</span>
+    
     </>
   );
 };
@@ -73,8 +80,10 @@ const CatType = ({ meal }: MealTypes) => {
   return (
     
       <div className="cat">
+        <Link to={meal.cat}>
         <img src={meal.img} alt={meal.cat} className="cat-img" />
         <h3 className="cat-title">{meal.cat}</h3>
+        </Link>
       </div>
     
   );

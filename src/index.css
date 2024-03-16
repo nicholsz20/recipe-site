@@ -9,6 +9,7 @@ header {
   background: #011627;
   height: 40px;
   position: sticky;
+  
 }
 
 header svg {
@@ -180,3 +181,11 @@ code {
   font-weight: bold;
 }
 
+@media screen and (max-width: 600px) {
+  .cat-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    justify-content: center;
+  }
+}
