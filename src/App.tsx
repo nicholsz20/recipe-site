@@ -10,6 +10,7 @@ import Header from "./Components/Header";
 import { useState } from "react";
 import Category from "./Components/Category";
 import RecipePage from "./Components/ReicpePage";
+import RecipeSpotLight from "./Components/RecipeSpotLight";
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
             <Route path="/recipe_list" element={<RecipeList />} />
             <Route path="/categories" element={<Category />} />
             <Route path="/categories/:mealType" element={<RecipePage />} />
+            <Route path="/categories/:mealType/:id" element={<RecipeSpotLight />} />
           </Route>
         </Routes>
     </BrowserRouter>
