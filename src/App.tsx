@@ -9,10 +9,12 @@ import RecipeList from './Components/RecipeList';
 import Header from "./Components/Header";
 import { useState } from "react";
 import Category from "./Components/Category";
+import RecipePage from "./Components/ReicpePage";
 
 
 function App() {
   const [showNav, setShowNav] = useState(false);
+  
 
   const handleShowNav = () => {
     setShowNav((prevShow) => !prevShow);
@@ -27,6 +29,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/recipe_list" element={<RecipeList />} />
             <Route path="/categories" element={<Category />} />
+            <Route path="/categories/:mealType" element={<RecipePage />} />
           </Route>
         </Routes>
     </BrowserRouter>
