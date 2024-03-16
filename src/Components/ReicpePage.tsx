@@ -2,14 +2,14 @@ import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 interface MatchParams {
   [key: string]: string;
 }
 
 interface Recipe {
-  id: number;
+  id: string;
   title: string;
   image: string;
 }
@@ -22,7 +22,7 @@ interface ApiResponse {
 
 //const KEY = "24ba6bf883a944a09e1f169a549f2c10";
 //const KEY = "cb61fb7dddc34daba2d7f61b391e90c1";
-//const KEY = "e3de5d36255e46babdbd21cbbbf5ec38";
+const KEY = "e3de5d36255e46babdbd21cbbbf5ec38";
 
 const RecipePage = () => {
   const { mealType } = useParams<MatchParams>();
@@ -82,10 +82,13 @@ interface CatRecipesArray {
 }
 
 const CatDisplay = ({ catData }: CatRecipesArray) => {
+    const { mealType } = useParams<MatchParams>();
   return (
     <div className="cat">
+        <Link to={`/categories/${mealType}/${catData.id}`} onClick={() => console.log(catData.id)}>
       <img src={catData.image} alt={catData.title} className="cat-img" />
       <h3 className="cat-title">{catData.title}</h3>
+      </Link>
     </div>
   );
 };
