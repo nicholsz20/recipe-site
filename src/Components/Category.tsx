@@ -27,7 +27,7 @@ const mealType = [
     img: "https://spoonacular.com/recipeImages/636133-312x231.jpg",
   },
   {
-    cat: "breakfest",
+    cat: "breakfast",
     img: "https://spoonacular.com/recipeImages/665307-312x231.jpg",
   },
   {
