@@ -1,17 +1,16 @@
 import { BrowserRouter, Routes, Route} from "react-router-dom";
 
 
-
-
 import Navbar from './Components/Navbar';
 import Home from './Components/Home';
 import RecipeList from './Components/RecipeList';
 import Header from "./Components/Header";
 import { useState } from "react";
 import Category from "./Components/Category";
+
+import Chatbot from './Components/Chatbot';
 import RecipePage from "./Components/ReicpePage";
 import RecipeSpotLight from "./Components/RecipeSpotLight";
-
 
 function App() {
   const [showNav, setShowNav] = useState(false);
@@ -34,6 +33,7 @@ function App() {
             <Route path="/categories/:mealType/:id" element={<RecipeSpotLight />} />
           </Route>
         </Routes>
+        <Chatbot />
     </BrowserRouter>
   );
 }
