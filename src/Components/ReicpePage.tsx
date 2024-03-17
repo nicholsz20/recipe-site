@@ -10,7 +10,7 @@ interface MatchParams {
   [key: string]: string;
 }
 
-interface Recipe {
+export interface Recipe {
   id: string;
   title: string;
   image: string;
