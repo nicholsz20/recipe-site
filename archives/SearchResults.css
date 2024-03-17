@@ -1,0 +1,13 @@
+.results-container {
+    padding-left: 10px; /* Adjust the value as needed */
+  }
+
+.results-container input{
+    margin-top: 20px;
+    margin-right: 10px;
+    width: 200px;
+}
+
+.results-container button{
+    margin-left: -5px;
+}
