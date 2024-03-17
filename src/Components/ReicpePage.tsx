@@ -24,13 +24,19 @@ interface ApiResponse {
 
 //const KEY = "24ba6bf883a944a09e1f169a549f2c10";
 //const KEY = "cb61fb7dddc34daba2d7f61b391e90c1";
-const KEY = "e3de5d36255e46babdbd21cbbbf5ec38";
+//const KEY = "e3de5d36255e46babdbd21cbbbf5ec38";
+//const KEY = "fa0f376a27884351b9f852d1ae5e20f8";
+const KEY = "50980bc1ff884ed68509e87da2cf5db1";
 
 const RecipePage = () => {
   const { mealType } = useParams<MatchParams>();
   const [catData, setCatData] = useState<Recipe[] | null>(null);
   const [catLoading, setCatLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const [mealTypeState, setMealTypeState] = useState(mealType); 
+  const [initialMealType] = useState(mealType); // Store the initial mealType
+  // State variable to store the mealType
+
   const [currentPage, setCurrentPage] = useState(1); // Current page number
   const [recipesPerPage] = useState(9); // Number of recipes to show per page
 
@@ -58,11 +64,10 @@ const RecipePage = () => {
         setCatLoading(false);
       }
     };
+        fetchData();
+    }, [mealType]);
 
-    fetchData();
-  }, []);
-
-  console.log("CAtDAta", catData);
+  console.log("CatData", catData);
 
   return (
     <div>
