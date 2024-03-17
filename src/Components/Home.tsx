@@ -1,28 +1,54 @@
 // import React, { useState } from 'react';
 
+
+import { useNavigate, useSearchParams } from 'react-router-dom';
+
+import React, { useState } from 'react';
 import './Home.css';
+
+
+
 
 
 const Home = () => {
     // State for search input
-    // const [searchInput, setSearchInput] = useState('');
+    const [searchInput, setSearchInput] = useState('');
+    
+
+
+    const navigate = useNavigate();
+    const [searchParams, setSearchParams] = useSearchParams();
 
     // Function to handle search submit
-    // const handleSearch = () => {
-    //     // You would implement search functionality here
-    //     console.log('Searching for:', searchInput);
-    // };
+     const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchInput(e.target.value)
+        
+         // You would implement search functionality here
+         console.log('Searching for:', searchInput);
+         setSearchParams({ q: e.target.value });
+     };
+
+     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        if (searchInput.trim()) {
+            navigate(`/search?q=${encodeURIComponent(searchInput.trim())}`)
+        }
+     }
+
+     
 
     return (
         <div>
             <div className="hero">
+                <form onSubmit={handleSubmit}>
                 <input
                     type="text"
-                    // value={searchInput}
-                    // onChange={(e) => setSearchInput(e.target.value)}
+                    value={searchInput}
+                    onChange={handleSearch}
                     placeholder="Search recipes..."
                 />
-                <button>Search</button>
+                <button type="submit">Search</button>
+                </form>
             </div>
         </div>
     );

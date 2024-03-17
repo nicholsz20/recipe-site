@@ -18,7 +18,7 @@ const Pagination = ({ totalRecipes, recipesPerPage, currentPage, setCurrentPage 
     };
   
     return (
-      <div>
+      <div className='pagination'>
         {pageNumbers.map((number) => (
           <button
             key={number}
