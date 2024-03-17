@@ -11,7 +11,7 @@ import './Home.css';
 
 
 const Home = () => {
-    // State for search input
+    // State for search input, s
     const [searchInput, setSearchInput] = useState('');
     
 
