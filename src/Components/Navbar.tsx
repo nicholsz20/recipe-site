@@ -20,7 +20,7 @@ const Navbar = ({showNav, handleShowNav}: ShowNav) => {
            Home</Link>
         </li> 
         <li>
-          <Link to="/recipe_list" className="nav-link" onClick={handleShowNav}>
+          <Link to="/mystery" className="nav-link" onClick={handleShowNav}>
           <FontAwesomeIcon icon={faQuestion} className="nav-icons"/>
           Mystery Meal</Link>
         </li>

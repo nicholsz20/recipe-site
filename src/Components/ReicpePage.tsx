@@ -3,12 +3,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import BackButton from "./BackButton";
+import Pagination from "./Pageination";
 
 interface MatchParams {
   [key: string]: string;
 }
 
-interface Recipe {
+export interface Recipe {
   id: string;
   title: string;
   image: string;
@@ -29,13 +31,23 @@ const RecipePage = () => {
   const [catData, setCatData] = useState<Recipe[] | null>(null);
   const [catLoading, setCatLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const [currentPage, setCurrentPage] = useState(1); // Current page number
+  const [recipesPerPage] = useState(9); // Number of recipes to show per page
+
+  const indexOfLastRecipe = currentPage * recipesPerPage;
+
+    // Calculate the index of the first recipe to show on the current page
+    const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
+
+    // Get the recipes to show on the current page
+    const currentRecipes = catData?.slice(indexOfFirstRecipe, indexOfLastRecipe);
 
   useEffect(() => {
     const fetchData = async () => {
       setCatLoading(true);
       try {
         const response = await axios.get<ApiResponse>(
-          `https://api.spoonacular.com/recipes/complexSearch?apiKey=${KEY}&type=${mealType}&number=10`
+          `https://api.spoonacular.com/recipes/complexSearch?apiKey=${KEY}&type=${mealType}&number=99`
         );
         console.log(response);
         setCatData(response.data.results);
@@ -54,6 +66,7 @@ const RecipePage = () => {
 
   return (
     <div>
+        
       {catLoading ? (
         <div className="spinner-container">
           <FontAwesomeIcon icon={faSpinner} spin size="3x" />
@@ -63,12 +76,19 @@ const RecipePage = () => {
         <div>{error}</div>
       ) : catData && catData.length > 0 ? (
         <>
+            <BackButton />
           <h1 className="cat">{mealType}</h1>
           <div className="cat-container">
-            {catData.map((c) => (
+            {currentRecipes?.map((c) => (
               <CatDisplay key={c.id} catData={c} />
             ))}
           </div>
+          <Pagination
+          totalRecipes={catData?.length || 0}
+          recipesPerPage={recipesPerPage}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          />
         </>
       ) : (
         <div>No recipes found</div>

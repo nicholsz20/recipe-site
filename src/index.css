@@ -139,6 +139,12 @@ ul li .nav-link:active {
   word-break: break-word;
   border: 0;
 }
+
+.top-left {
+  position: fixed;
+  top: 120px;
+  left: 20px;
+}
 .bottom-right {
   position: fixed;
   bottom: 20px;
@@ -160,6 +166,7 @@ code {
   grid-template-rows: (minmax(100px, auto));
   gap: 20px;
   justify-content: center;
+  margin-top: 10px;
 }
 
 .cat {
@@ -188,4 +195,33 @@ code {
     gap: 20px;
     justify-content: center;
   }
+}
+
+
+
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination button {
+  background-color: #f2f2f2;
+  border: 1px solid #ddd;
+  color: #333;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.pagination button:hover {
+  background-color: #ddd;
+}
+
+.pagination button.active {
+  background-color: #4CAF50;
+  color: white;
+  border: 1px solid #4CAF50;
 }

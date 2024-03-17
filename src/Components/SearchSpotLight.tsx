@@ -2,7 +2,7 @@ import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"
+import { useParams, useSearchParams } from "react-router-dom"
 import BackButton from "./BackButton";
 import RecipeInstructions from "./RecipeInstructions";
 
@@ -26,13 +26,21 @@ interface MatchParams {
   cuisines: string[];
   }
 
-  //const KEY = "24ba6bf883a944a09e1f169a549f2c10";
+//const KEY = "24ba6bf883a944a09e1f169a549f2c10";
 //const KEY = "cb61fb7dddc34daba2d7f61b391e90c1";
 //const KEY = "e3de5d36255e46babdbd21cbbbf5ec38";
-  const KEY = "fa0f376a27884351b9f852d1ae5e20f8"
+//const KEY = "fa0f376a27884351b9f852d1ae5e20f8";
+const KEY = "50980bc1ff884ed68509e87da2cf5db1";
 
-const RecipeSpotLight = () => {
-    const { id } = useParams<MatchParams>()
+
+
+const SearchSpotLight = () => {
+    const id = useParams<{id: string}>();
+    const numberId = id.id
+    console.log(id)
+    
+
+
     const [idData, setIdData] = useState<RecipeDetails | null>(null);
     const [idLoading, setIdLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
@@ -41,11 +49,11 @@ const RecipeSpotLight = () => {
         const fetchData = async () => {
           setIdLoading(true);
           try {
-            const response = await axios.get(
-                `https://api.spoonacular.com/recipes/${id}/information?apiKey=${KEY}`
-                );
-            console.log(response);
-            setIdData(response.data);
+            if (id){
+              const response = await axios.get(`https://api.spoonacular.com/recipes/${numberId}/information?apiKey=${KEY}`);
+              setIdData(response.data);
+              console.log(response.data)
+            }
           } catch (error) {
             console.error("Error fetching data:", error);
             setError("Error fetching data");
@@ -53,8 +61,10 @@ const RecipeSpotLight = () => {
             setIdLoading(false);
           }
         };
-    
-        fetchData();
+      
+        
+          fetchData();
+        
       }, [id]);
 
       console.log(idData)
@@ -98,4 +108,4 @@ const RecipeSpotLight = () => {
 }
 
 
-export default RecipeSpotLight;
+export default SearchSpotLight;

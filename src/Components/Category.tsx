@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import ViewAll from './Assets/viewall.webp';
+import BackButton from './BackButton';
 
 const mealType = [
   {
@@ -27,7 +28,7 @@ const mealType = [
     img: "https://spoonacular.com/recipeImages/636133-312x231.jpg",
   },
   {
-    cat: "breakfest",
+    cat: "breakfast",
     img: "https://spoonacular.com/recipeImages/665307-312x231.jpg",
   },
   {
@@ -55,6 +56,7 @@ const mealType = [
 const Category = () => {
   return (
     <>
+    <BackButton />
     <h1 className="cat">Categories</h1>
     <div className="cat-container">   
       {mealType.map((meal, index) => (
