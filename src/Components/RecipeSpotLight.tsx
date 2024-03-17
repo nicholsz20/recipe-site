@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
+import BackButton from "./BackButton";
 import RecipeInstructions from "./RecipeInstructions";
 
 interface MatchParams {
@@ -70,6 +71,7 @@ const RecipeSpotLight = () => {
         </div>
       ) : (
         <div key={idData?.id} className="container">
+            <BackButton />
         <h3 className="title">{idData?.title}</h3>
         <div className="content">
           <img src={idData?.image} className="image" />
