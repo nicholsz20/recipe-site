@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner, faSyncAlt } from "@fortawesome/free-solid-svg-icons";
 
 import RecipeInstructions from "./RecipeInstructions";
+import BackButton from "./BackButton";
 
 export interface Recipe {
   id: string;
@@ -81,9 +82,11 @@ const RecipeList = () => {
           <p>Loading...</p>
         </div>
       ) : (
+        
         data?.recipes.map((recipe) => (
           <RecipeArray key={recipe.id} data={recipe} />
         ))
+        
       )}
     </div>
   );

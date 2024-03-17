@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import BackButton from "./BackButton";
 
 interface MatchParams {
   [key: string]: string;
@@ -54,6 +55,7 @@ const RecipePage = () => {
 
   return (
     <div>
+        
       {catLoading ? (
         <div className="spinner-container">
           <FontAwesomeIcon icon={faSpinner} spin size="3x" />
@@ -63,6 +65,7 @@ const RecipePage = () => {
         <div>{error}</div>
       ) : catData && catData.length > 0 ? (
         <>
+            <BackButton />
           <h1 className="cat">{mealType}</h1>
           <div className="cat-container">
             {catData.map((c) => (
