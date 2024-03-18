@@ -2,9 +2,10 @@ import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams, useSearchParams } from "react-router-dom"
+import { Link, useParams, useSearchParams } from "react-router-dom"
 import BackButton from "./BackButton";
 import RecipeInstructions from "./RecipeInstructions";
+import { Recipe, SearchResponse } from "./SearchPage";
 
 interface MatchParams {
     [key: string]: string;
@@ -26,11 +27,17 @@ interface MatchParams {
   cuisines: string[];
   }
 
-//const KEY = "24ba6bf883a944a09e1f169a549f2c10";
+  interface SimRecipes {
+    id: string,
+    title: string,
+    imageType: string,
+  }
+
+const KEY = "24ba6bf883a944a09e1f169a549f2c10";
 //const KEY = "cb61fb7dddc34daba2d7f61b391e90c1";
 //const KEY = "e3de5d36255e46babdbd21cbbbf5ec38";
 //const KEY = "fa0f376a27884351b9f852d1ae5e20f8";
-const KEY = "50980bc1ff884ed68509e87da2cf5db1";
+//const KEY = "50980bc1ff884ed68509e87da2cf5db1";
 
 
 
@@ -40,7 +47,7 @@ const SearchSpotLight = () => {
     console.log(id)
     
 
-
+    const [simData, setSimData] = useState<SimRecipes[] | null>(null);
     const [idData, setIdData] = useState<RecipeDetails | null>(null);
     const [idLoading, setIdLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
@@ -53,6 +60,11 @@ const SearchSpotLight = () => {
               const response = await axios.get(`https://api.spoonacular.com/recipes/${numberId}/information?apiKey=${KEY}`);
               setIdData(response.data);
               console.log(response.data)
+              const simResponse = await axios.get(`https://api.spoonacular.com/recipes/${numberId}/similar?apiKey=${KEY}`);
+              setSimData(simResponse.data);
+              
+              console.log("SIM RESPONSE DONE!")
+              
             }
           } catch (error) {
             console.error("Error fetching data:", error);
@@ -68,6 +80,7 @@ const SearchSpotLight = () => {
       }, [id]);
 
       console.log(idData)
+      console.log("Similar Recipes" ,simData)
 
 
 
@@ -86,14 +99,17 @@ const SearchSpotLight = () => {
         <div className="content">
           <img src={idData?.image} className="image" />
           
-            <div className="instructions">
-            <h2>Instructions</h2>
-            <p>
-            {idData?.analyzedInstructions?.[0]?.steps.map((step: { step: string }, index: number) => (
-  <li key={index}>{step.step}</li>
-))}
-            </p>
-          </div>
+          {(idData?.analyzedInstructions) && idData.analyzedInstructions.length > 0 && (
+  <div className="instructions">
+    <h2>Instructions</h2>
+    <ul>
+      {idData.analyzedInstructions[0].steps.map((step: { step: string }, index: number) => (
+        <li key={index}>{step.step}</li>
+      ))}
+    </ul>
+  </div>
+)}
+
 
           
         </div>
@@ -101,9 +117,38 @@ const SearchSpotLight = () => {
         <div className="summary">
           <RecipeInstructions instructions={idData?.summary ?? "No Summary Available"} />
         </div>
+        {simData && simData.map((sim) => (
+  <SimRecipes simData={sim} key={sim.id}/>
+))}
       </div>
       )}
       </div>
+    )
+}
+
+
+export interface SimRecipe {
+    id: string;
+    title: string;
+    imageType: string;
+}
+interface SimRecipesData {
+    simData: SimRecipe;
+}
+
+
+const SimRecipes = ({ simData }: SimRecipesData) => {
+    console.log("MOUNTED SIM")
+    const getImageUrl = (recipe: SimRecipe) => {
+        return `https://spoonacular.com/recipeImages/${recipe.id}-636x393.${recipe.imageType}`;
+      };
+    return (
+        <div>
+      <Link to={`/search/${simData.id}`}>
+        <img src={getImageUrl(simData)} alt={simData.title} className="cat-img" />
+      </Link>
+      <h3 className="cat-title">{simData.title}</h3>
+    </div>
     )
 }
 
