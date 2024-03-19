@@ -5,6 +5,9 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
 import BackButton from "./BackButton";
 import RecipeInstructions from "./RecipeInstructions";
+import { SimRecipes } from "./SearchSpotLight";
+import SimRecipesContainer from "./SimRecipesContainer";
+
 
 interface MatchParams {
     [key: string]: string;
@@ -37,6 +40,8 @@ const RecipeSpotLight = () => {
     const [idLoading, setIdLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
 
+    const [simData, setSimData] = useState<SimRecipes[] | null>(null);
+
     useEffect(() => {
         const fetchData = async () => {
           setIdLoading(true);
@@ -46,6 +51,12 @@ const RecipeSpotLight = () => {
                 );
             console.log(response);
             setIdData(response.data);
+
+            const simResponse = await axios.get(`https://api.spoonacular.com/recipes/${id}/similar?apiKey=${KEY}`);
+            setSimData(simResponse.data);
+              
+              console.log("SIM RESPONSE DONE!")
+
           } catch (error) {
             console.error("Error fetching data:", error);
             setError("Error fetching data");
@@ -91,6 +102,11 @@ const RecipeSpotLight = () => {
         <div className="summary">
           <RecipeInstructions instructions={idData?.summary ?? "No Summary Available"} />
         </div>
+        <div className="sim-recipes-container">
+                        {simData && simData.map((sim) => (
+                            <SimRecipesContainer simData={sim} key={sim.id}/>
+                        ))}
+                    </div>
       </div>
       )}
       </div>

@@ -6,6 +6,7 @@ import { Link, useParams, useSearchParams } from "react-router-dom"
 import BackButton from "./BackButton";
 import RecipeInstructions from "./RecipeInstructions";
 import { Recipe, SearchResponse } from "./SearchPage";
+import SimRecipesContainer from "./SimRecipesContainer";
 
 interface MatchParams {
     [key: string]: string;
@@ -27,7 +28,7 @@ interface MatchParams {
   cuisines: string[];
   }
 
-  interface SimRecipes {
+  export interface SimRecipes {
     id: string,
     title: string,
     imageType: string,
@@ -114,12 +115,14 @@ const SearchSpotLight = () => {
           
         </div>
         <h4 className="title">Summary</h4>
-        <div className="summary">
-          <RecipeInstructions instructions={idData?.summary ?? "No Summary Available"} />
-        </div>
-        {simData && simData.map((sim) => (
-  <SimRecipes simData={sim} key={sim.id}/>
-))}
+                    <div className="summary">
+                        <RecipeInstructions instructions={idData?.summary ?? "No Summary Available"} />
+                    </div>
+                    <div className="sim-recipes-container">
+                        {simData && simData.map((sim) => (
+                            <SimRecipesContainer simData={sim} key={sim.id}/>
+                        ))}
+                    </div>
       </div>
       )}
       </div>
@@ -132,25 +135,8 @@ export interface SimRecipe {
     title: string;
     imageType: string;
 }
-interface SimRecipesData {
-    simData: SimRecipe;
-}
 
 
-const SimRecipes = ({ simData }: SimRecipesData) => {
-    console.log("MOUNTED SIM")
-    const getImageUrl = (recipe: SimRecipe) => {
-        return `https://spoonacular.com/recipeImages/${recipe.id}-636x393.${recipe.imageType}`;
-      };
-    return (
-        <div>
-      <Link to={`/search/${simData.id}`}>
-        <img src={getImageUrl(simData)} alt={simData.title} className="cat-img" />
-      </Link>
-      <h3 className="cat-title">{simData.title}</h3>
-    </div>
-    )
-}
 
 
 export default SearchSpotLight;
