@@ -2,7 +2,7 @@ import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, useParams, useSearchParams } from "react-router-dom"
+import { Link, useParams, useSearchParams} from "react-router-dom"
 import BackButton from "./BackButton";
 import RecipeInstructions from "./RecipeInstructions";
 import { Recipe, SearchResponse } from "./SearchPage";
@@ -34,11 +34,11 @@ interface MatchParams {
     imageType: string,
   }
 
-const KEY = "24ba6bf883a944a09e1f169a549f2c10";
-//const KEY = "cb61fb7dddc34daba2d7f61b391e90c1";
+// const KEY = "24ba6bf883a944a09e1f169a549f2c10";
+// const KEY = "cb61fb7dddc34daba2d7f61b391e90c1";
 //const KEY = "e3de5d36255e46babdbd21cbbbf5ec38";
 //const KEY = "fa0f376a27884351b9f852d1ae5e20f8";
-//const KEY = "50980bc1ff884ed68509e87da2cf5db1";
+const KEY = "50980bc1ff884ed68509e87da2cf5db1";
 
 
 
@@ -83,9 +83,6 @@ const SearchSpotLight = () => {
       console.log(idData)
       console.log("Similar Recipes" ,simData)
 
-
-
-
     return (
         <div>
             {idLoading ? (
@@ -94,6 +91,7 @@ const SearchSpotLight = () => {
           <p>Loading...</p>
         </div>
       ) : (
+        
         <div key={idData?.id} className="container">
             <BackButton />
         <h3 className="title">{idData?.title}</h3>
