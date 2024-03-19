@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import ViewAll from './Assets/viewall.webp';
 import BackButton from './BackButton';
+import SearchBar from './SearchBar';
+import './Category.css'
 
 const mealType = [
   {
@@ -56,6 +58,7 @@ const mealType = [
 const Category = () => {
   return (
     <>
+    <SearchBar className='Category-search' />
     <BackButton />
     <h1 className="cat">Categories</h1>
     <div className="cat-container">   

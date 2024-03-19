@@ -1,24 +1,8 @@
-
-/* Home.css */
-.hero {
-    background-image: url('./Assets/hero.webp');
-    background-size: 100% 1;
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 100vh; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: #fff;
-  } 
-
-.hero-search input {
+.SearchPage-search input {
     top: 40%; /* Adjust this as needed */
     left: 50%;
     transform: translateX(15%);
-    width: 100px auto; /* Allows the card to only be as wide as its content */
+    width: auto ; /* Allows the card to only be as wide as its content */
     max-width: 380px; /* Max width can still be 380px */
     padding: 10px;
     margin-bottom: 2px;
@@ -26,9 +10,11 @@
     border-radius: 4px;
     box-sizing: border-box;
     height: 30px;
+    margin-left: 370px;
+    margin-top: 10px;
 }
 
-.hero-search button {
+.SearchPage-search button {
     top: 40%; /* Adjust this as needed */
     left: 50%;
     height: 30px;
@@ -45,16 +31,6 @@
     cursor: pointer;
 } 
 
-
-
-.hero-search button:hover {
+.SearchPage-search button:hover {
     background-color: #617c99; 
 }
-
-@media (max-width: 768px) {
-    .hero {
-      width: 80%; /* Adjusted to a percentage for smaller screens */
-      top: 20%; /* Give more space at the top on smaller screens */
-    }
-  }
-  

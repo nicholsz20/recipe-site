@@ -15,30 +15,25 @@ import SearchPage from "./Components/SearchPage";
 import SearchSpotLight from "./Components/SearchSpotLight";
 
 function App() {
-  const [showNav, setShowNav] = useState(false);
-  
-
+  const [showNav, setShowNav] = useState(false);  
   const handleShowNav = () => {
     setShowNav((prevShow) => !prevShow);
   }
-  //s
-
+  
   return (
     <BrowserRouter>
-    <Header handleShowNav={handleShowNav}/>
+      <Header handleShowNav={handleShowNav}/>
       <Navbar showNav={showNav} handleShowNav={handleShowNav}/>
-        <Routes>
-          <Route>
-            <Route path="/" element={<Home />} />
-            <Route path="/search" element={<SearchPage />} />
-            <Route path="/search/:id" element={<SearchSpotLight />} />
-            <Route path="/mystery" element={<RecipeList />} />
-            <Route path="/categories" element={<Category />} />
-            <Route path="/categories/:mealType" element={<RecipePage />} />
-            <Route path="/categories/:mealType/:id" element={<RecipeSpotLight />} />
-          </Route>
-        </Routes>
-        <Chatbot />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/search" element={<SearchPage />} />
+        <Route path="/search/:id" element={<SearchSpotLight />} />
+        <Route path="/mystery" element={<RecipeList />} />
+        <Route path="/categories" element={<Category />} />
+        <Route path="/categories/:mealType" element={<RecipePage />} />
+        <Route path="/categories/:mealType/:id" element={<RecipeSpotLight />} />
+      </Routes>
+      <Chatbot />
     </BrowserRouter>
   );
 }
