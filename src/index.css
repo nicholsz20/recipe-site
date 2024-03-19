@@ -180,12 +180,14 @@ code {
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid #ccc;
+  
 }
 
 .cat-title {
   margin-top: 10px;
   font-size: 16px;
   font-weight: bold;
+  
 }
 
 @media screen and (max-width: 600px) {
@@ -224,4 +226,23 @@ code {
   background-color: #4CAF50;
   color: white;
   border: 1px solid #4CAF50;
+}
+
+
+
+.sim-recipes-container {
+  display: flex;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  width: 850px;
+  margin: 7px;
+  /* Set the width of each recipe card */
+}
+
+.sim-recipes-container > div {
+  flex: 0 0 auto;
+  width: 33%; 
+  
+  padding: 5px;
+  
 }
