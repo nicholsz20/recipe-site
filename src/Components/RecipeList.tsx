@@ -6,30 +6,11 @@ import { faSpinner, faSyncAlt } from "@fortawesome/free-solid-svg-icons";
 import RecipeInstructions from "./RecipeInstructions";
 import BackButton from "./BackButton";
 import KEY from './apiConfig'; 
+import { RecipeArrayProps, SpoonacularResponse } from "./Types/GlobalTypes";
 
-export interface Recipe {
-  id: string;
-  title: string;
-  analyzedInstructions: [
-    {
-      steps: [
-        {
-          step: string;
-        }
-      ];
-    }
-  ];
-  dishTypes: string[];
-  diaryFree: boolean;
-  diets: string[];
-  summary: string;
-  image: string;
-  cuisines: string[];
-}
 
-export interface SpoonacularResponse {
-  recipes: Recipe[];
-}
+
+
 
 
 
@@ -88,9 +69,7 @@ const RecipeList = () => {
   );
 };
 
-interface RecipeArrayProps {
-  data: Recipe;
-}
+
 
 const RecipeArray = ({ data }: RecipeArrayProps) => {
   return (

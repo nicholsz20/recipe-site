@@ -8,21 +8,10 @@ import Pagination from './Pageination';
 import SearchBar from "./SearchBar";
 import './SearchPage.css';
 import KEY from './apiConfig'; 
+import { SearchRecipesProps, SearchResponse } from './Types/GlobalTypes';
 
 
-export interface SearchResponse {
-  results: Recipe[];
-  offset: number;
-  number: number;
-  totalResults: number;
-}
 
-export interface Recipe {
-  id: string;
-  title: string;
-  image: string;
-  // Add other recipe properties here
-}
 
 const SearchPage = () => {
   const [searchParams] = useSearchParams();
@@ -94,10 +83,7 @@ const SearchPage = () => {
   );
 };
 
-interface SearchRecipesProps {
-  searchData: Recipe;
-  searchQuery: string;
-}
+
 
 const SearchDisplay = ({ searchData, searchQuery }: SearchRecipesProps) => {
     console.log(searchData.id)

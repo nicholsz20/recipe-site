@@ -6,22 +6,9 @@ import { Link, useParams } from "react-router-dom";
 import BackButton from "./BackButton";
 import Pagination from "./Pageination";
 import KEY from './apiConfig'; 
+import { ApiResponse, CatRecipesArray, MatchParams, Recipe } from "./Types/GlobalTypes";
 
-interface MatchParams {
-  [key: string]: string;
-}
 
-export interface Recipe {
-  id: string;
-  title: string;
-  image: string;
-}
-interface ApiResponse {
-    results: Recipe[];
-    offset: number;
-    number: number;
-    totalResults: number;
-  }
 
 
 
@@ -99,9 +86,7 @@ const RecipePage = () => {
   );
 };
 
-interface CatRecipesArray {
-  catData: Recipe;
-}
+
 
 const CatDisplay = ({ catData }: CatRecipesArray) => {
     const { mealType } = useParams<MatchParams>();

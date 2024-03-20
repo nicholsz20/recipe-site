@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { SearchBarProps } from './Types/GlobalTypes';
 
-interface SearchBarProps {
-  className?: string;
-}
 
-const SearchBar: React.FC<SearchBarProps> = ({ className }) => {
+
+const SearchBar = ({ className }: SearchBarProps) => {
   const [searchInput, setSearchInput] = useState('');
   const navigate = useNavigate();
 

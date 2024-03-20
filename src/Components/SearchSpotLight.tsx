@@ -5,35 +5,13 @@ import { useEffect, useState } from "react";
 import { Link, useParams, useSearchParams} from "react-router-dom"
 import BackButton from "./BackButton";
 import RecipeInstructions from "./RecipeInstructions";
-import { Recipe, SearchResponse } from "./SearchPage";
 import SimRecipesContainer from "./SimRecipesContainer";
 import KEY from './apiConfig'; 
+import { RecipeDetails, SimRecipes } from "./Types/GlobalTypes";
 
-interface MatchParams {
-    [key: string]: string;
-  }
 
-  export interface RecipeDetails {
-    id: string;
-  title: string;
-  analyzedInstructions?: {
-    steps: Array<{
-      step: string;
-    }>;
-  }[];
-  dishTypes: string[];
-  diaryFree: boolean;
-  diets: string[];
-  summary?: string;
-  image: string;
-  cuisines: string[];
-  }
 
-  export interface SimRecipes {
-    id: string,
-    title: string,
-    imageType: string,
-  }
+
 
 
 
@@ -123,11 +101,6 @@ const SearchSpotLight = () => {
 }
 
 
-export interface SimRecipe {
-    id: string;
-    title: string;
-    imageType: string;
-}
 
 
 
