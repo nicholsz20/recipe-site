@@ -33,7 +33,6 @@ function App() {
         <Route path="/categories/:mealType" element={<RecipePage />} />
         <Route path="/categories/:mealType/:id" element={<RecipeSpotLight />} />
       </Routes>
-      <Chatbot />
     </BrowserRouter>
   );
 }
