@@ -25,7 +25,7 @@ function App() {
       <Header handleShowNav={handleShowNav}/>
       <Navbar showNav={showNav} handleShowNav={handleShowNav}/>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home showNav={showNav} />} />
         <Route path="/search" element={<SearchPage />} />
         <Route path="/search/:id" element={<SearchSpotLight />} />
         <Route path="/mystery" element={<RecipeList />} />
