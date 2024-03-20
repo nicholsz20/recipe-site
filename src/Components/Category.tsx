@@ -1,9 +1,10 @@
-import { Link } from 'react-router-dom';
-import ViewAll from './Assets/viewall.webp';
-import BackButton from './BackButton';
-import SearchBar from './SearchBar';
-import './Category.css'
-import { MealTypes } from './Types/GlobalTypes';
+import { Link } from "react-router-dom";
+import ViewAll from "./Assets/viewall.webp";
+import BackButton from "./BackButton";
+import SearchBar from "./SearchBar";
+import "./Category.css";
+import { MealTypes } from "./Types/GlobalTypes";
+import { CatType } from "./CatType";
 
 const mealType = [
   {
@@ -51,40 +52,23 @@ const mealType = [
     img: "https://spoonacular.com/recipeImages/651437-556x370.jpg",
   },
   {
-    cat: 'View All',
-    img: `${ViewAll}`
-  }
+    cat: "View All",
+    img: `${ViewAll}`,
+  },
 ];
 
 const Category = () => {
   return (
     <>
-    <SearchBar className='Category-search' />
-    <BackButton />
-    <h1 className="cat">Categories</h1>
-    <div className="cat-container">   
-      {mealType.map((meal, index) => (
-        <CatType key={index} meal={meal} />
-      ))}
-      
-    </div>
-    
-    </>
-  );
-};
-
-
-
-const CatType = ({ meal }: MealTypes) => {
-  return (
-    
-      <div className="cat">
-        <Link to={meal.cat}>
-        <img src={meal.img} alt={meal.cat} className="cat-img" />
-        <h3 className="cat-title">{meal.cat}</h3>
-        </Link>
+      <SearchBar className="Category-search" />
+      <BackButton />
+      <h1 className="cat">Categories</h1>
+      <div className="cat-container">
+        {mealType.map((meal, index) => (
+          <CatType key={index} meal={meal} />
+        ))}
       </div>
-    
+    </>
   );
 };
 

@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { SearchBarProps } from './Types/GlobalTypes';
-
-
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { SearchBarProps } from "./Types/GlobalTypes";
 
 const SearchBar = ({ className }: SearchBarProps) => {
-  const [searchInput, setSearchInput] = useState('');
+  const [searchInput, setSearchInput] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -31,4 +29,3 @@ const SearchBar = ({ className }: SearchBarProps) => {
 };
 
 export default SearchBar;
-

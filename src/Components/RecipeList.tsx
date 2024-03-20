@@ -5,14 +5,9 @@ import { faSpinner, faSyncAlt } from "@fortawesome/free-solid-svg-icons";
 
 import RecipeInstructions from "./RecipeInstructions";
 import BackButton from "./BackButton";
-import KEY from './apiConfig'; 
+import KEY, { fetchMysteryData } from "./apiConfig";
 import { RecipeArrayProps, SpoonacularResponse } from "./Types/GlobalTypes";
-
-
-
-
-
-
+import { RecipeArray } from "./RecipeArray";
 
 const RecipeList = () => {
   const [data, setData] = useState<SpoonacularResponse | null>(null);
@@ -21,13 +16,11 @@ const RecipeList = () => {
   const fetchData = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(
-        `https://api.spoonacular.com/recipes/random?apiKey=${KEY}`
-      );
+      const response = await fetchMysteryData();
       console.log(response);
-      setData(response.data);
+      setData(response);
     } catch (error) {
-      console.error("Error fetching data:", error);
+      throw error;
     } finally {
       setLoading(false);
     }
@@ -59,37 +52,10 @@ const RecipeList = () => {
           <p>Loading...</p>
         </div>
       ) : (
-        
         data?.recipes.map((recipe) => (
           <RecipeArray key={recipe.id} data={recipe} />
         ))
-        
       )}
-    </div>
-  );
-};
-
-
-
-const RecipeArray = ({ data }: RecipeArrayProps) => {
-  return (
-    <div key={data.id} className="container">
-      <h3 className="title">{data.title}</h3>
-      <div className="content">
-        <img src={data.image} className="image" />
-        <div className="instructions">
-          <h2>Instructions</h2>
-          <p>
-            {data.analyzedInstructions[0].steps.map((step, index) => (
-              <li key={index}>{step.step}</li>
-            ))}
-          </p>
-        </div>
-      </div>
-      <h4 className="title">Summary</h4>
-      <div className="summary">
-        <RecipeInstructions instructions={data.summary} />
-      </div>
     </div>
   );
 };
