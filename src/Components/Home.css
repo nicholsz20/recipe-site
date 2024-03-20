@@ -14,7 +14,7 @@
     color: #fff;
   } 
 
-.hero input {
+.hero-search input {
     top: 40%; /* Adjust this as needed */
     left: 50%;
     transform: translateX(15%);
@@ -28,7 +28,7 @@
     height: 30px;
 }
 
-.hero button {
+.hero-search button {
     top: 40%; /* Adjust this as needed */
     left: 50%;
     height: 30px;
@@ -47,7 +47,7 @@
 
 
 
-.hero button:hover {
+.hero-search button:hover {
     background-color: #617c99; 
 }
 

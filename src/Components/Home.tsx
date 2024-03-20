@@ -1,14 +1,12 @@
 // import React, { useState } from 'react';
 
-
-import { useNavigate, useSearchParams } from 'react-router-dom';
-
-import React, { useState } from 'react';
 import './Home.css';
+import SearchBar from './SearchBar';
 
 interface ShowNav {
     showNav: boolean
 }
+
 
 
 
@@ -37,11 +35,12 @@ const Home = ({showNav}: ShowNav) => {
         }
      }
 
-     
+    
 
     return (
         <div>
             <div className="hero">
+
                 <div className={!showNav ? '': 'hidden'}>
                 <form onSubmit={handleSubmit}>
                 <input
@@ -53,6 +52,9 @@ const Home = ({showNav}: ShowNav) => {
                 <button type="submit">Search</button>
                 </form>
                 </div>
+
+                <SearchBar className="hero-search" />
+
             </div>
         </div>
     );

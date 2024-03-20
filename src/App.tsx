@@ -15,17 +15,14 @@ import SearchPage from "./Components/SearchPage";
 import SearchSpotLight from "./Components/SearchSpotLight";
 
 function App() {
-  const [showNav, setShowNav] = useState(false);
-  
-
+  const [showNav, setShowNav] = useState(false);  
   const handleShowNav = () => {
     setShowNav((prevShow) => !prevShow);
   }
-  //s
-
+  
   return (
     <BrowserRouter>
-    <Header handleShowNav={handleShowNav}/>
+      <Header handleShowNav={handleShowNav}/>
       <Navbar showNav={showNav} handleShowNav={handleShowNav}/>
         <Routes>
           <Route>
