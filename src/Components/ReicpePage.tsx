@@ -5,19 +5,21 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import BackButton from "./BackButton";
 import Pagination from "./Pageination";
-import KEY from './apiConfig'; 
-import { ApiResponse, CatRecipesArray, MatchParams, Recipe } from "./Types/GlobalTypes";
-
-
-
-
+import KEY, { fetchMealTypeData } from "./apiConfig";
+import {
+  ApiResponse,
+  CatRecipesArray,
+  MatchParams,
+  Recipe,
+} from "./Types/GlobalTypes";
+import CatDisplay from "./CatDisplay";
 
 const RecipePage = () => {
   const { mealType } = useParams<MatchParams>();
   const [catData, setCatData] = useState<Recipe[] | null>(null);
   const [catLoading, setCatLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
-  const [mealTypeState, setMealTypeState] = useState(mealType); 
+  const [mealTypeState, setMealTypeState] = useState(mealType);
   const [initialMealType] = useState(mealType); // Store the initial mealType
   // State variable to store the mealType
 
@@ -26,36 +28,31 @@ const RecipePage = () => {
 
   const indexOfLastRecipe = currentPage * recipesPerPage;
 
-    // Calculate the index of the first recipe to show on the current page
-    const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
+  // Calculate the index of the first recipe to show on the current page
+  const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
 
-    // Get the recipes to show on the current page
-    const currentRecipes = catData?.slice(indexOfFirstRecipe, indexOfLastRecipe);
+  // Get the recipes to show on the current page
+  const currentRecipes = catData?.slice(indexOfFirstRecipe, indexOfLastRecipe);
 
   useEffect(() => {
     const fetchData = async () => {
       setCatLoading(true);
       try {
-        const response = await axios.get<ApiResponse>(
-          `https://api.spoonacular.com/recipes/complexSearch?apiKey=${KEY}&type=${mealType}&number=99`
-        );
-        console.log(response);
-        setCatData(response.data.results);
+        const mealTypeData = await fetchMealTypeData(mealType);
+        setCatData(mealTypeData.results);
       } catch (error) {
-        console.error("Error fetching data:", error);
         setError("Error fetching data");
       } finally {
         setCatLoading(false);
       }
     };
-        fetchData();
-    }, [mealType]);
+    fetchData();
+  }, [mealType]);
 
   console.log("CatData", catData);
 
   return (
     <div>
-        
       {catLoading ? (
         <div className="spinner-container">
           <FontAwesomeIcon icon={faSpinner} spin size="3x" />
@@ -65,7 +62,7 @@ const RecipePage = () => {
         <div>{error}</div>
       ) : catData && catData.length > 0 ? (
         <>
-            <BackButton />
+          <BackButton />
           <h1 className="cat">{mealType}</h1>
           <div className="cat-container">
             {currentRecipes?.map((c) => (
@@ -73,10 +70,10 @@ const RecipePage = () => {
             ))}
           </div>
           <Pagination
-          totalRecipes={catData?.length || 0}
-          recipesPerPage={recipesPerPage}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
+            totalRecipes={catData?.length || 0}
+            recipesPerPage={recipesPerPage}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
           />
         </>
       ) : (
@@ -86,17 +83,4 @@ const RecipePage = () => {
   );
 };
 
-
-
-const CatDisplay = ({ catData }: CatRecipesArray) => {
-    const { mealType } = useParams<MatchParams>();
-  return (
-    <div className="cat">
-        <Link to={`/categories/${mealType}/${catData.id}`} onClick={() => console.log(catData.id)}>
-      <img src={catData.image} alt={catData.title} className="cat-img" />
-      <h3 className="cat-title">{catData.title}</h3>
-      </Link>
-    </div>
-  );
-};
 export default RecipePage;

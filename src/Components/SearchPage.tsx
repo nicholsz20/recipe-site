@@ -1,21 +1,19 @@
-import { useEffect, useState } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
-import axios from 'axios';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSpinner } from '@fortawesome/free-solid-svg-icons';
-import BackButton from './BackButton';
-import Pagination from './Pageination';
+import { useEffect, useState } from "react";
+import { Link, useSearchParams } from "react-router-dom";
+import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import BackButton from "./BackButton";
+import Pagination from "./Pageination";
 import SearchBar from "./SearchBar";
-import './SearchPage.css';
-import KEY from './apiConfig'; 
-import { SearchRecipesProps, SearchResponse } from './Types/GlobalTypes';
-
-
-
+import "./SearchPage.css";
+import KEY, { fetchSearchData } from "./apiConfig";
+import { SearchRecipesProps, SearchResponse } from "./Types/GlobalTypes";
+import SearchDisplay from "./SearchDisplay";
 
 const SearchPage = () => {
   const [searchParams] = useSearchParams();
-  const searchQuery = searchParams.get('q') || '';
+  const searchQuery = searchParams.get("q") || "";
   const [searchData, setSearchData] = useState<SearchResponse | null>(null);
   const [searchLoading, setSearchLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
@@ -24,35 +22,34 @@ const SearchPage = () => {
 
   const indexOfLastRecipe = currentPage * recipesPerPage;
   const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
-  const currentRecipes = searchData?.results?.slice(indexOfFirstRecipe, indexOfLastRecipe);
+  const currentRecipes = searchData?.results?.slice(
+    indexOfFirstRecipe,
+    indexOfLastRecipe
+  );
 
   useEffect(() => {
     const fetchData = async () => {
       setSearchLoading(true);
       try {
-        const response = await axios.get(
-          `https://api.spoonacular.com/recipes/complexSearch?query=${searchQuery}&apiKey=${KEY}&number=99`
-        );
-        setSearchData(response.data);
+        const searchData = await fetchSearchData(searchQuery);
+        setSearchData(searchData);
       } catch (error) {
-        console.error('Error fetching data:', error);
-        setError('Error fetching data');
+        setError("Error fetching data");
       } finally {
         setSearchLoading(false);
       }
     };
-
     if (searchQuery) {
       fetchData();
     }
   }, [searchQuery]);
 
-  console.log(searchData)
+  console.log(searchData);
 
   return (
     <div>
-      <SearchBar className='SearchPage-search' />
-  
+      <SearchBar className="SearchPage-search" />
+
       {searchLoading ? (
         <div className="spinner-container">
           <FontAwesomeIcon icon={faSpinner} spin size="3x" />
@@ -66,7 +63,11 @@ const SearchPage = () => {
           <h1 className="cat">{searchQuery}</h1>
           <div className="cat-container">
             {currentRecipes?.map((recipe) => (
-              <SearchDisplay key={recipe.id} searchData={recipe} searchQuery={searchQuery} />
+              <SearchDisplay
+                key={recipe.id}
+                searchData={recipe}
+                searchQuery={searchQuery}
+              />
             ))}
           </div>
           <Pagination
@@ -79,20 +80,6 @@ const SearchPage = () => {
       ) : (
         <div>No recipes found.Please try a different search.</div>
       )}
-    </div>
-  );
-};
-
-
-
-const SearchDisplay = ({ searchData, searchQuery }: SearchRecipesProps) => {
-    console.log(searchData.id)
-  return (
-    <div className="cat">
-      <Link to={`/search/${searchData.id}`}>
-        <img src={searchData.image} alt={searchData.title} className="cat-img" />
-      </Link>
-      <h3 className="cat-title">{searchData.title}</h3>
     </div>
   );
 };
