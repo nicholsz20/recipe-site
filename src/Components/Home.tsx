@@ -6,11 +6,13 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import React, { useState } from 'react';
 import './Home.css';
 
+interface ShowNav {
+    showNav: boolean
+}
 
 
 
-
-const Home = () => {
+const Home = ({showNav}: ShowNav) => {
     // State for search input, s
     const [searchInput, setSearchInput] = useState('');
     
@@ -40,15 +42,17 @@ const Home = () => {
     return (
         <div>
             <div className="hero">
+                <div className={!showNav ? '': 'hidden'}>
                 <form onSubmit={handleSubmit}>
                 <input
                     type="text"
                     value={searchInput}
                     onChange={handleSearch}
                     placeholder="Search recipes..."
-                />
+                    />
                 <button type="submit">Search</button>
                 </form>
+                </div>
             </div>
         </div>
     );

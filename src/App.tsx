@@ -29,7 +29,7 @@ function App() {
       <Navbar showNav={showNav} handleShowNav={handleShowNav}/>
         <Routes>
           <Route>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home showNav={showNav}/>} />
             <Route path="/search" element={<SearchPage />} />
             <Route path="/search/:id" element={<SearchSpotLight />} />
             <Route path="/mystery" element={<RecipeList />} />

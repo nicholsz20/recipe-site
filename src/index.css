@@ -197,6 +197,87 @@ code {
     gap: 20px;
     justify-content: center;
   }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+    width: 100%;
+  }
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  margin: auto;
+}
+
+.image {
+  width: 350px;
+  height: 350px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.instructions {
+  flex: 1;
+  margin-right: 10px;
+  margin-left: 10px;
+  width: 375px;
+
+}
+
+.instructions h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.instructions p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+.sim-recipes-container {
+  display: flex;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  width: 375px;
+  margin: 7px;
+  height: 350px;
+  /* Set the width of each recipe card */
+}
+
+.sim-recipes-container > div {
+  flex: 0 0 auto;
+  width: 100%; 
+  text-align: center;
+  
+  padding: 5px;
+  
+}
+
+.sim-recipes-container > div > .cat-title {
+  width: 100%;
+}
+
+.sidenav {
+  width: 84%;
+  background: #011627;
+  position: absolute;
+  height: 95vh;
+  padding: 0 30px;
+  transition: all 1s;
+  left: -100%;
+}
+
+}
+
+.hidden {
+  display: none;
 }
 
 
@@ -236,6 +317,7 @@ code {
   padding-bottom: 10px;
   width: 850px;
   margin: 7px;
+  height: 225px;
   /* Set the width of each recipe card */
 }
 
