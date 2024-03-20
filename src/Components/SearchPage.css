@@ -44,13 +44,12 @@
       flex-direction: column;
       width: 80%;
     }
-  
-    .SearchPage-search input,
-    .SearchPage-search button {
-      width: 100%; /* Full width for smaller screens */
-      margin-right: 0;
-    }
-  
+
+
+  .SearchPage-search input{
+    width: 60%;
+    margin-left: 40px;
+  }
     .SearchPage-search button {
       margin-top: 10px; /* Space between input and button on small screens */
     }
