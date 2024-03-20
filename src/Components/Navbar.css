@@ -1,0 +1,11 @@
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .sidenav {
+
+    }
+    .sidenav.active {
+        width: 56px; /* Full width on smaller screens, if desired */
+    
+        /* More styling as needed */
+    }
+}

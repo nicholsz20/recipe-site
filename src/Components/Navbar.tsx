@@ -1,6 +1,7 @@
 import { faHouse, faList, faQuestion } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
+import "./Navbar.css";
 
 import logo from "./Assets/logo.png"
 import { ShowNavNHandle } from "./Types/GlobalTypes";
