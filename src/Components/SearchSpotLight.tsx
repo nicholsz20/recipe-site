@@ -112,7 +112,7 @@ const SearchSpotLight = () => {
 
           
         </div>
-        <h4 className="title">Summary</h4>
+        <h2 className="title">Summary</h2>
                     <div className="summary">
                         <RecipeInstructions instructions={idData?.summary ?? "No Summary Available"} />
                     </div>

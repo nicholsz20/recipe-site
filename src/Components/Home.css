@@ -53,7 +53,7 @@
 
 @media (max-width: 768px) {
     .hero {
-      width: 80%; /* Adjusted to a percentage for smaller screens */
+      width: 100%; /* Adjusted to a percentage for smaller screens */
       top: 20%; /* Give more space at the top on smaller screens */
     }
   }
