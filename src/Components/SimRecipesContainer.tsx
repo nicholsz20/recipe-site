@@ -1,16 +1,12 @@
-// SimRecipes.tsx
-
-import React from "react";
 import { Link } from "react-router-dom";
-import { SimRecipe } from "./SearchSpotLight";
+import { SimRecipes, SimRecipesProps } from "./Types/GlobalTypes";
 
-interface SimRecipesProps {
-  simData: SimRecipe;
-}
+
+
 
 const SimRecipesContainer = ({ simData }: SimRecipesProps) => {
   console.log("MOUNTED SIM")
-  const getImageUrl = (recipe: SimRecipe) => {
+  const getImageUrl = (recipe: SimRecipes) => {
     return `https://spoonacular.com/recipeImages/${recipe.id}-636x393.${recipe.imageType}`;
   };
   return (

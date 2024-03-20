@@ -5,30 +5,13 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
 import BackButton from "./BackButton";
 import RecipeInstructions from "./RecipeInstructions";
-import { SimRecipes } from "./SearchSpotLight";
+import { MatchParams, RecipeDetails, SimRecipes } from "./Types/GlobalTypes";
 import SimRecipesContainer from "./SimRecipesContainer";
 import KEY from './apiConfig'; 
 
 
-interface MatchParams {
-    [key: string]: string;
-  }
 
-  export interface RecipeDetails {
-    id: string;
-  title: string;
-  analyzedInstructions?: {
-    steps: Array<{
-      step: string;
-    }>;
-  }[];
-  dishTypes: string[];
-  diaryFree: boolean;
-  diets: string[];
-  summary?: string;
-  image: string;
-  cuisines: string[];
-  }
+
 
 
 

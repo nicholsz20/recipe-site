@@ -4,10 +4,9 @@ import { useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import './Home.css';
 import SearchBar from './SearchBar';
+import { ShowNav } from './Types/GlobalTypes';
 
-interface ShowNav {
-    showNav: boolean
-}
+
 
 
 

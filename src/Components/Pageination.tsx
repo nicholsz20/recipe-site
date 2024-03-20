@@ -1,11 +1,7 @@
-import React from 'react';
 
-interface PaginationProps {
-  totalRecipes: number;
-  recipesPerPage: number;
-  currentPage: number;
-  setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
-}
+import { PaginationProps } from './Types/GlobalTypes';
+
+
 
 
 const Pagination = ({ totalRecipes, recipesPerPage, currentPage, setCurrentPage }: PaginationProps) => {

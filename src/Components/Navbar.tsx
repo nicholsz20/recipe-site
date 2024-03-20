@@ -3,13 +3,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 
 import logo from "./Assets/logo.png"
+import { ShowNavNHandle } from "./Types/GlobalTypes";
 
-type ShowNav = {
-    showNav: boolean,
-    handleShowNav: () => void
-}
 
-const Navbar = ({showNav, handleShowNav}: ShowNav) => {
+
+const Navbar = ({showNav, handleShowNav}: ShowNavNHandle) => {
   return (
     <div className={showNav ? 'sidenav active' : 'sidenav'}>
         <img src={logo} alt="logo" className="logo"/>

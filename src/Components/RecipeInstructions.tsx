@@ -1,9 +1,4 @@
-import React from 'react';
-
-interface RecipeInstructionsProps {
-    instructions: string;
-}
-
+import { RecipeInstructionsProps } from "./Types/GlobalTypes";
 
 const RecipeInstructions = ({ instructions }: RecipeInstructionsProps) => {
     return (

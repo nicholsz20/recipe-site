@@ -1,10 +1,9 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { Nav } from "./Types/GlobalTypes";
 
 
-type Nav = {
-    handleShowNav: () => void
-}
+
 
 const Header = ({handleShowNav}: Nav) => {
     

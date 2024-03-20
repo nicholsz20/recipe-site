@@ -3,6 +3,7 @@ import ViewAll from './Assets/viewall.webp';
 import BackButton from './BackButton';
 import SearchBar from './SearchBar';
 import './Category.css'
+import { MealTypes } from './Types/GlobalTypes';
 
 const mealType = [
   {
@@ -72,14 +73,7 @@ const Category = () => {
   );
 };
 
-interface MealType {
-  cat: string;
-  img: string;
-}
 
-interface MealTypes {
-  meal: MealType;
-}
 
 const CatType = ({ meal }: MealTypes) => {
   return (
