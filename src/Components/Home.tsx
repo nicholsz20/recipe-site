@@ -1,5 +1,7 @@
 // import React, { useState } from 'react';
 
+import { useState } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import './Home.css';
 import SearchBar from './SearchBar';
 
@@ -41,19 +43,7 @@ const Home = ({showNav}: ShowNav) => {
         <div>
             <div className="hero">
 
-                <div className={!showNav ? '': 'hidden'}>
-                <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    value={searchInput}
-                    onChange={handleSearch}
-                    placeholder="Search recipes..."
-                    />
-                <button type="submit">Search</button>
-                </form>
-                </div>
-
-                <SearchBar className="hero-search" />
+                <SearchBar className={!showNav ? 'hero-search' : 'hero-search hidden'} />
 
             </div>
         </div>
