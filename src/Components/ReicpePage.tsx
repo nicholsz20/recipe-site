@@ -1,17 +1,13 @@
+//Purpose of this file is to display the food for a category
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import BackButton from "./BackButton";
 import Pagination from "./Pageination";
-import KEY, { fetchMealTypeData } from "./apiConfig";
-import {
-  ApiResponse,
-  CatRecipesArray,
-  MatchParams,
-  Recipe,
-} from "./Types/GlobalTypes";
+import { fetchMealTypeData } from "./apiConfig";
+import { MatchParams, Recipe } from "./Types/GlobalTypes";
 import CatDisplay from "./CatDisplay";
 
 const RecipePage = () => {
@@ -21,16 +17,11 @@ const RecipePage = () => {
   const [error, setError] = useState<string | null>(null);
   const [mealTypeState, setMealTypeState] = useState(mealType);
   const [initialMealType] = useState(mealType); // Store the initial mealType
-  // State variable to store the mealType
-
   const [currentPage, setCurrentPage] = useState(1); // Current page number
   const [recipesPerPage] = useState(9); // Number of recipes to show per page
-
   const indexOfLastRecipe = currentPage * recipesPerPage;
-
   // Calculate the index of the first recipe to show on the current page
   const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
-
   // Get the recipes to show on the current page
   const currentRecipes = catData?.slice(indexOfFirstRecipe, indexOfLastRecipe);
 
@@ -48,6 +39,7 @@ const RecipePage = () => {
     };
     fetchData();
   }, [mealType]);
+  //useeffect above calls the api when it gets mounted and whenever the mealType changes so whenever we pick a different category
 
   console.log("CatData", catData);
 

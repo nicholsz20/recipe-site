@@ -1,12 +1,13 @@
+//Purpose of this file is to display a single Search result recipe
+
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, useParams, useSearchParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import BackButton from "./BackButton";
 import RecipeInstructions from "./RecipeInstructions";
 import SimRecipesContainer from "./SimRecipesContainer";
-import KEY, { fetchInfoAndSimilarData } from "./apiConfig";
+import { fetchInfoAndSimilarData } from "./apiConfig";
 import { RecipeDetails, SimRecipes } from "./Types/GlobalTypes";
 
 const SearchSpotLight = () => {

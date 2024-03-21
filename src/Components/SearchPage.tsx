@@ -1,14 +1,15 @@
+//Purpose of this file is to display the entire search page when a user enters a search
+
 import { useEffect, useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
-import axios from "axios";
+import { useSearchParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import BackButton from "./BackButton";
 import Pagination from "./Pageination";
 import SearchBar from "./SearchBar";
 import "./SearchPage.css";
-import KEY, { fetchSearchData } from "./apiConfig";
-import { SearchRecipesProps, SearchResponse } from "./Types/GlobalTypes";
+import { fetchSearchData } from "./apiConfig";
+import { SearchResponse } from "./Types/GlobalTypes";
 import SearchDisplay from "./SearchDisplay";
 
 const SearchPage = () => {
@@ -20,6 +21,7 @@ const SearchPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [recipesPerPage] = useState(9);
 
+  //Steps for pageination
   const indexOfLastRecipe = currentPage * recipesPerPage;
   const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
   const currentRecipes = searchData?.results?.slice(

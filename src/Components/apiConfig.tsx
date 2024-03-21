@@ -1,3 +1,5 @@
+//Purpose Of this File is to hold all the Api calls
+
 import axios from "axios";
 
 //const KEY = "24ba6bf883a944a09e1f169a549f2c10";

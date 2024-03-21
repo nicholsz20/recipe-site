@@ -1,3 +1,5 @@
+//Purpose of this file is to display the food when a user searches and Links them to the searchspotlight
+
 import { Link } from "react-router-dom";
 import { SearchRecipesProps } from "./Types/GlobalTypes";
 

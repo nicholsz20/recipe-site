@@ -1,13 +1,14 @@
+//Purpose of this file is to display a single Recipe when user navigates through categories
+
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import BackButton from "./BackButton";
 import RecipeInstructions from "./RecipeInstructions";
 import { MatchParams, RecipeDetails, SimRecipes } from "./Types/GlobalTypes";
 import SimRecipesContainer from "./SimRecipesContainer";
-import KEY, { fetchInfoAndSimilarData } from "./apiConfig";
+import { fetchInfoAndSimilarData } from "./apiConfig";
 
 const RecipeSpotLight = () => {
   const { id } = useParams<MatchParams>();
@@ -36,11 +37,13 @@ const RecipeSpotLight = () => {
 
     fetchData();
   }, [id]);
+  //the useeffect above calls the api whenever the fetchdata is mounted or whenever id changes
 
   console.log(idData);
 
   return (
     <div>
+      {/* idLoading checks if its true and if it is then display the loading image */}
       {idLoading ? (
         <div className="spinner-container">
           <FontAwesomeIcon icon={faSpinner} spin size="3x" />

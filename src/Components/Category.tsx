@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom";
+//Purpose of this file is to display the categories that the api uses.
+
 import ViewAll from "./Assets/viewall.webp";
 import BackButton from "./BackButton";
 import SearchBar from "./SearchBar";
 import "./Category.css";
-import { MealTypes } from "./Types/GlobalTypes";
 import { CatType } from "./CatType";
 
 const mealType = [
@@ -56,6 +56,8 @@ const mealType = [
     img: `${ViewAll}`,
   },
 ];
+
+//Meal Type is our static array based off spoonacular meal types that we map over to create the category page
 
 const Category = () => {
   return (
