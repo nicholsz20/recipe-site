@@ -1,3 +1,5 @@
+//Purpose of this file is to display a single recipe
+
 import RecipeInstructions from "./RecipeInstructions";
 import { RecipeArrayProps } from "./Types/GlobalTypes";
 

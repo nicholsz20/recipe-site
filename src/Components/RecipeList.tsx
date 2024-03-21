@@ -1,12 +1,11 @@
-import axios from "axios";
+//Purpose of this file is to display a random mystery meal
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner, faSyncAlt } from "@fortawesome/free-solid-svg-icons";
 
-import RecipeInstructions from "./RecipeInstructions";
-import BackButton from "./BackButton";
-import KEY, { fetchMysteryData } from "./apiConfig";
-import { RecipeArrayProps, SpoonacularResponse } from "./Types/GlobalTypes";
+
+import { fetchMysteryData } from "./apiConfig";
+import { SpoonacularResponse } from "./Types/GlobalTypes";
 import { RecipeArray } from "./RecipeArray";
 
 const RecipeList = () => {
@@ -25,11 +24,12 @@ const RecipeList = () => {
       setLoading(false);
     }
   };
-
+  //useEffect causes the api to mounted whenever the page loads
   useEffect(() => {
     fetchData();
   }, []);
 
+  //Handles the refresh so when a user clicks the refresh button it fetches the api again
   const handleRefresh = () => {
     fetchData();
   };

@@ -1,3 +1,5 @@
+//Purpose of this file is displaying the project on the root
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';

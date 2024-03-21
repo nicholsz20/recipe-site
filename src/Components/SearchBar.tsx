@@ -1,3 +1,5 @@
+//Purpose of this file is to show a searchBar
+
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { SearchBarProps } from "./Types/GlobalTypes";
