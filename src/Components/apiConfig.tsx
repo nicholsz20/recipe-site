@@ -24,6 +24,7 @@ export const fetchSearchData = async (searchQuery: string) => {
 
 export const fetchInfoAndSimilarData = async (numberId: string | undefined) => {
   try {
+    // Promise.all allows us to run both api calls simultaneously 
     const [IdResponse, simResponse] = await Promise.all([
       axios.get(
         `https://api.spoonacular.com/recipes/${numberId}/information?apiKey=${KEY}`
